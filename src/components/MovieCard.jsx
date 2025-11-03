@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 
 const API_KEY = "41e2bba9";
-const DETAILS_URL = (id) => `http://www.omdbapi.com/?i=${id}&apikey=${API_KEY}&plot=full`;
+const DETAILS_URL = (id) => `https://www.omdbapi.com/?i=${id}&apikey=${API_KEY}&plot=full`;
 
 function MovieCard({ movie, isFavorite = false, isAdding = false, onAddFavorite, onRemoveFavorite }) {
   const [showModal, setShowModal] = useState(false);
@@ -294,5 +294,6 @@ function MovieCard({ movie, isFavorite = false, isAdding = false, onAddFavorite,
     </div>
   );
 }
+
 
 export default MovieCard;
