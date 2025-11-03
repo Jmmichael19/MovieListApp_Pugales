@@ -3,7 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const OMDB_API_KEY = "41e2bba9";
 const YOUTUBE_API_KEY = "AIzaSyC3mhE2yk-kQVSMhC-HHQ_UPxkGYhW_AeI";
-const DETAILS_URL = (id) => `http://www.omdbapi.com/?i=${id}&apikey=${OMDB_API_KEY}&plot=full`;
+
+// ✅ FIX: use HTTPS instead of HTTP (works on Netlify)
+const DETAILS_URL = (id) => `https://www.omdbapi.com/?i=${id}&apikey=${OMDB_API_KEY}&plot=full`;
+
 const YOUTUBE_SEARCH_URL = (query) =>
   `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}+official+trailer&type=video&key=${YOUTUBE_API_KEY}`;
 
@@ -70,8 +73,8 @@ function MovieDetailsPage() {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -bottom-32 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-40 right-20 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-32 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
       {/* Back Button */}
@@ -104,6 +107,7 @@ function MovieDetailsPage() {
           </div>
         </div>
       ) : details ? (
+     
         <div className="container mx-auto px-4 py-20 relative z-10">
           {/* Auto-playing trailer at the top */}
           {trailerUrl ? (
